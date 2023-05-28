@@ -1,47 +1,36 @@
-# ToDo app
-A simple todo app written in PHP and uses MySQL to store todo items.
+Added function : 
 
-This example illustrates creating a CRUD app (Create, Retreive, Update, and Delete) in PHP.
+<?php
+function MarkAllDone()
+{
+    $mark_all_done_query = "UPDATE tasks SET done = 1 WHERE done = 0;";
+    if ($GLOBALS['conn']->query($mark_all_done_query)) {
+        echo "All tasks marked as done.";
+    } else {
+        echo "Error updating tasks: " . $GLOBALS['conn']->error;
+    }
+}
 
-## Usage
-You need to install mysql into your c9 workspace. Click on the bash terminal tab at the bottom of cloud9 IDE and type the following command:
 
-`mysql-ctl install`
+this function makes all the to do list marked as done 
 
-### Option 1: using the phpMyAdmin GUI tool
-1. Install phpMyAdmin
-`phpmyadmin-ctl install`
-2. Copy the output URL and put it in a new tab and login into phpMyAdmin using your username with no password.
-3. create a database named "todo_db" with the following table
-4. create a table named "tasks" with the following fields:
-```
-+------------+--------------+------+-----+---------+----------------+
-| Field      | Type         | Null | Key | Default | Extra          |
-+------------+--------------+------+-----+---------+----------------+
-| id         | mediumint(9) | NO   | PRI | NULL    | auto_increment |
-| task       | varchar(255) | NO   |     | NULL    |                |
-| date_added | datetime     | NO   |     | NULL    |                |
-| done       | tinyint(1)   | NO   |     | 0       |                |
-+------------+--------------+------+-----+---------+----------------+
-```
+outputs:
 
-### Option 2: using the command line interface (CLI)
-1. From the Terminal, run the following commands:
-` mysql -u yourC9Username -p `
-Hit Enter for the password as there should be no password for your mysql database server
-2. Run the following SQL commands:
-```
-CREATE DATABASE todo_db;
-USE todo_db;
-CREATE TABLE tasks(
-    id MEDIUMINT NOT NULL AUTO_INCREMENT, 
-    task VARCHAR(255) NOT NULL, 
-    date_added DATETIME NOT NULL,
-    done TINYINT(1) NOT NULL DEFAULT 0,
-    PRIMARY KEY (id));
-```
+-Running the app
 
-## Running the app
-Once the database has been installed and the table has been created, simply run the project and visit the given URL.
+![image](https://github.com/KhalidAlghamdi12/php-mysql-LAB/assets/109826424/156c9b1d-2dad-41b3-86ad-81276fff8ce4)
+
+
+
+-Adding TODOs
+
+![image](https://github.com/KhalidAlghamdi12/php-mysql-LAB/assets/109826424/e0e73c77-158b-4f7d-b984-243f453c1cdb)
+
+
+
+-Mark all of tasks as done 
+
+![image](https://github.com/KhalidAlghamdi12/php-mysql-LAB/assets/109826424/1c724e9f-4cd4-43d3-b752-4b136d05f5c5)
+
 
 
